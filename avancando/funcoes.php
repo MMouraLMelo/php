@@ -1,7 +1,7 @@
 <?php
 function exibeMensagem (string $mensagem)
 {
-   echo $mensagem . PHP_EOL; 
+   echo $mensagem.  '<br>'; 
 }
 function sacar(array $conta, float $valorASacar): array
 {
@@ -21,3 +21,5 @@ function depositar(array $conta, float $valorADepositar): array
     }
     return $conta;
 }
+
+
