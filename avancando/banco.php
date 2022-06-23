@@ -14,10 +14,11 @@ $contasCorrentes = [
         'saldo' => 50
     ]
 ];
+unset($contasCorrentes['123.456.789-12']);
 $contasCorrentes['123.456.789-10'] = sacar($contasCorrentes['123.456.789-10'], valorASacar: 500);
 $contasCorrentes['123.456.789-11'] = sacar($contasCorrentes['123.456.789-11'], valorASacar: 500);
-$contasCorrentes['123.456.789-12'] = sacar($contasCorrentes['123.456.789-12'], valorASacar: 500);
-$contasCorrentes['123.456.789-12'] = depositar($contasCorrentes['123.456.789-12'], valorADepositar: 1000);
+$contasCorrentes['123.456.789-10'] = depositar($contasCorrentes['123.456.789-10'], valorADepositar: 1000);
  foreach ($contasCorrentes as $cpf => $conta){
-    exibeMensagem (mensagem: "$cpf {$conta['titular']} {$conta['saldo']}");
+    ['titular' => $titular, 'saldo' => $saldo] = $conta;
+    exibeMensagem (mensagem: "$cpf $titular $saldo");
  }
