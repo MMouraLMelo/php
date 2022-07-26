@@ -1,5 +1,5 @@
 <?php
-class Conta
+abstract class Conta
 {
     private string $titular;
     private float $saldo;
@@ -12,14 +12,16 @@ class Conta
         self :: $numeroContas++;
     }
 
-    public function sacar(float $valorSacar): void
+    public function saca(float $valorSacar): void
     {
+        $tarifaSaque = $valorSacar * $this -> percentualTarifa();
+        $valorSaque = $valorSacar + $tarifaSaque;
         if ($valorSacar > $this -> saldo)
         {
             echo "Saldo indisponível";
             return;
         }
-        $this -> saldo -= $valorSacar;
+        $this -> saldo -= $valorSaque;
         
     }
     public function depositar(float $valorDepositar): void
@@ -64,4 +66,6 @@ class Conta
     {
         return self:: $numeroContas;
     }
+
+    abstract public function percentualTarifa(): float;
 }
